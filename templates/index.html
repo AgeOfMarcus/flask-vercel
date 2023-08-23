@@ -1,0 +1,41 @@
+<head>
+    <title>i.marcusj.tech - simple, anonymous, and free</title>
+    <link rel="stylesheet" href='/assets/upload.css'>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" sizes="48x48" href="https://marcusj.tech/assets/img/fashion.svg?h=dc3a468180f67681a58667c460707efd">
+    <script defer src="https://analytics.marcusj.tech/analytics.js"></script>
+</head>
+<body>
+    <!---
+    I don't know how to write HTML,
+    I am very sorry for what you are about to witness,
+    I just hope to god it looks half-decent,
+
+    Amen.
+    --->
+    <script src='/assets/imageSelect.js'></script>
+    <div class="container" style="line-height: normal">
+        <div>
+            <h1><a href='/'>i.marcusj.tech</a></h1>
+            <p>
+                Simple, anonymous, free.<br>
+                Hosted on <a href='/__repl'>replit.com</a>.<br>
+                Images stored on Google Firestore.<br><br>
+
+                <a href='/api/docs'>API docs</a>
+        </div><br><br>
+
+        <form action='/upload' method="post" enctype="multipart/form-data" id='image-form'>
+            <label for="imageSelect" style="color:white"><input type="file" name="image" id="imageSelect" accept="image/*">Upload Image</label>
+        </form><br><br>
+        <footer>
+            <a href="https://simpleanalytics.com/marcusj.tech?utm_source=marcusj.tech&utm_content=badge" referrerpolicy="origin" target="_blank"><img src="https://simpleanalyticsbadge.com/marcusj.tech?mode=dark" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" /></a><br>
+            <h4><a href='https://marcusj.tech'>marcusj.tech - home</a></h4>
+        </footer>
+    </div>
+</body>
