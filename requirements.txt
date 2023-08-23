@@ -1,2 +1,5 @@
 Flask
+firebase-admin
+google-cloud-firestore
 Flask-CORS
+Pillow
