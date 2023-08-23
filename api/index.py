@@ -1,4 +1,4 @@
-from dotenv import load_dotenv; load_dotenv()
+#from dotenv import load_dotenv; load_dotenv()
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -157,5 +157,3 @@ def app_view_shrt(shrt, fn=None):
             as_attachment=False,
         )
     return 'error: image not found', 404
-
-app.run(host='127.0.0.1', port=8080)
