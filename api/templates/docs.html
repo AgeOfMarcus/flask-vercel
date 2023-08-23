@@ -1,0 +1,51 @@
+<head>
+    <title>i.marcusj.tech - simple, anonymous, and free</title>
+    <link rel="stylesheet" href='/assets/upload.css'>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" sizes="48x48" href="https://marcusj.tech/assets/img/fashion.svg?h=dc3a468180f67681a58667c460707efd">
+    <script defer src="https://analytics.marcusj.tech/analytics.js"></script>
+</head>
+<body>
+    <!---
+    I don't know how to write HTML,
+    I am very sorry for what you are about to witness,
+    I just hope to god it looks half-decent,
+
+    Amen.
+    --->
+    <div id='container'>
+        <h1><a href='/'>i.marcusj.tech</a></h1>
+
+        <h2><a href="https://pypi.org/project/imj/">Available on PyPi</a></h2>
+        <pre><code>
+            import imj
+
+            res = imj.upload_file("Pictures\\widepeepohappy.png")
+            print(
+                res.viewer, # viewer url
+                res.image, # image url
+                res.shorten(), # shortened url
+            )
+
+            # you can upload raw data with imj.upload(bytedata)
+        </code></pre>
+
+        <h3>Pure python example</h3>
+        <pre><code>
+            import requests
+
+            r = requests.post("https://i.marcusj.tech/api/upload", files={'image': open('widepeepohappy.png', 'rb')})
+
+            print(r.url) # this is the viewing url
+            img_id = r.url.split('/')[-1]
+            shortlink = requests.get(f'https://i.marcusj.tech/shorten/{img_id}').url # this is the shortlink directly to the image
+
+            print(r.url.replace('view','image')) # this is the long link, directly to the image
+        </code></pre>
+    </div>
+</body>

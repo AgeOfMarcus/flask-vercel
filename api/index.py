@@ -1,3 +1,4 @@
+from dotenv import load_dotenv; load_dotenv()
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -73,12 +74,6 @@ def redirect(route):
 @app.route('/')
 def app_index():
     return render_template('index.html')
-
-@app.route('/assets/<fn>')
-def app_asset(fn):
-    if fn in os.listdir('assets'):
-        return send_file('assets/' + fn)
-    return 'eat shit'
 
 @app.route('/api/docs')
 def app_api_docs():
@@ -163,3 +158,4 @@ def app_view_shrt(shrt, fn=None):
         )
     return 'error: image not found', 404
 
+app.run(host='127.0.0.1', port=8080)
