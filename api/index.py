@@ -46,7 +46,7 @@ creds = credentials.Certificate(json.loads(base64.b64decode(os.getenv("CREDS")).
 firebase_admin.initialize_app(creds)
 db = firestore.client().collection('images')
 lnks = firestore.client().collection('links')
-URL = 'https://i.marcusj.tech'
+URL = 'https://i.marcusj.org'
 
 app = Flask(__name__)
 CORS(app)
@@ -106,7 +106,7 @@ def app_api_upload():
         uid = str(uuid.uuid4()).replace('-','')
         doc = db.document(uid)
         doc.set({'image': enc})
-        return jsonify({'url': f'https://i.marcusj.tech/image/{uid}'})
+        return jsonify({'url': f'{URL}/image/{uid}'})
     return 'error: no image', 400
 
 @app.route('/view/<uid>')

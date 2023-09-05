@@ -1,5 +1,5 @@
 <head>
-    <title>i.marcusj.tech - simple, anonymous, and free</title>
+    <title>i.marcusj.org - simple, anonymous, and free</title>
     <link rel="stylesheet" href='/static/upload.css'>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" sizes="48x48" href="https://marcusj.tech/assets/img/fashion.svg?h=dc3a468180f67681a58667c460707efd">
-    <script defer src="https://analytics.marcusj.tech/analytics.js"></script>
+    <link rel="icon" type="image/svg+xml" sizes="48x48" href="https://marcusj.org/assets/img/fashion.svg?h=dc3a468180f67681a58667c460707efd">
+    <script defer src="https://analytics.marcusj.org/analytics.js"></script>
 </head>
 <body>
     <!---
@@ -19,7 +19,7 @@
     Amen.
     --->
     <div id='container'>
-        <h1><a href='/'>i.marcusj.tech</a></h1>
+        <h1><a href='/'>i.marcusj.org</a></h1>
 
         <h2><a href="https://pypi.org/project/imj/">Available on PyPi</a></h2>
         <pre><code>
@@ -39,11 +39,11 @@
         <pre><code>
             import requests
 
-            r = requests.post("https://i.marcusj.tech/api/upload", files={'image': open('widepeepohappy.png', 'rb')})
+            r = requests.post("https://i.marcusj.org/api/upload", files={'image': open('widepeepohappy.png', 'rb')})
 
             print(r.url) # this is the viewing url
             img_id = r.url.split('/')[-1]
-            shortlink = requests.get(f'https://i.marcusj.tech/shorten/{img_id}').url # this is the shortlink directly to the image
+            shortlink = requests.get(f'https://i.marcusj.org/shorten/{img_id}').url # this is the shortlink directly to the image
 
             print(r.url.replace('view','image')) # this is the long link, directly to the image
         </code></pre>
