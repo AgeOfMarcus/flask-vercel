@@ -1,4 +1,4 @@
-/*window.onload = function() {
+window.onload = function() {
     var form = document.getElementById("image-form")
     var imageSelect = document.getElementById("imageSelect")
     imageSelect.value = ""
@@ -7,4 +7,4 @@
             form.submit()
         }
     })
-}*/
+}
