@@ -84,9 +84,11 @@ def app_upload():
     image = request.files.get('image')
     if image:
         im = Image.open(image)
-        if not im.verify():
-            print('err, invalid image:', im, im.format, im.mode, im.size, im.info, im.verify())
-            return 'error: file is not a valid image', 422
+        try:
+            im.verify()
+            print('verified image for av')
+        except Exception as e:
+            return f'error: file is not a valid image - {e}', 422
         raw = im.format.encode() + b':::' + lzma.compress(get_image_data(im))
         enc = base64.b64encode(raw).decode()
         uid = str(uuid.uuid4()).replace('-','')
