@@ -85,6 +85,7 @@ def app_upload():
     if image:
         im = Image.open(image)
         if not im.verify():
+            print('err, invalid image:', im, im.format, im.mode, im.size, im.info, im.verify())
             return 'error: file is not a valid image', 422
         raw = im.format.encode() + b':::' + lzma.compress(get_image_data(im))
         enc = base64.b64encode(raw).decode()
