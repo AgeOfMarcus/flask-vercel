@@ -84,8 +84,9 @@ def app_upload():
     image = request.files.get('image')
     if image:
         im = Image.open(image)
+        imv = Image.open(image)
         try:
-            im.verify()
+            imv.verify()
             print('verified image for av')
         except Exception as e:
             return f'error: file is not a valid image - {e}', 422
