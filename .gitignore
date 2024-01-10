@@ -11,3 +11,7 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
+
+# custom scripts
+.scripts/
+.scripts/*
