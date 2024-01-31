@@ -93,9 +93,10 @@ def app_upload():
         raw = im.format.encode() + b':::' + lzma.compress(get_image_data(im))
         enc = base64.b64encode(raw).decode()
         uid = str(uuid.uuid4()).replace('-','')
+        key = str(uuid.uuid4()).replace('-','')
         doc = db.document(uid)
-        doc.set({'image': enc})
-        return redirect(f'/view/{uid}')
+        doc.set({'image': enc, 'key': key})
+        return redirect(f'/view/{uid}?key={key}')
     return 'error: no image', 400
 
 @app.route('/api/upload', methods=['POST'])
@@ -108,14 +109,27 @@ def app_api_upload():
         raw = im.format.encode() + b':::' + lzma.compress(get_image_data(im))
         enc = base64.b64encode(raw).decode()
         uid = str(uuid.uuid4()).replace('-','')
+        key = str(uuid.uuid4()).replace('-','')
         doc = db.document(uid)
-        doc.set({'image': enc})
-        return jsonify({'url': f'{URL}/image/{uid}'})
+        doc.set({'image': enc, 'key': key})
+        return jsonify({'url': f'{URL}/image/{uid}', 'key': key})
     return 'error: no image', 400
 
 @app.route('/view/<uid>')
 def app_view(uid):
-    return render_template('view.html', uuid=uid)
+    key = request.args.get('key')
+    return render_template('view.html', uuid=uid, key=key)
+
+@app.route('/delete/<uid>')
+def app_delete(uid):
+    key = request.args.get('key')
+    doc = db.document(uid)
+    if (data := doc.get()).exists:
+        if data.get('key') == key:
+            doc.delete()
+            return redirect('/')
+        return 'error: invalid key', 401
+    return 'error: image not found', 404
 
 @app.route('/image/<uid>')
 @app.route('/image/<uid>/.png')

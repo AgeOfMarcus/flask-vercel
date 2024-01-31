@@ -22,8 +22,10 @@
     --->
     <div id="container">
         <h1><a href='/'>i.marcusj.org</a></h1>
+        <p>This URL contains a key used to delete your image. Save this link so you can delete your image later.</p>
         <img id='imageURL' src='/image/{{ uuid }}'></img><br>
         <a href='/shorten/{{ uuid }}'>Shorten link</a><br>
         <a href='/image/{{ uuid }}/.png'>Image URL</a>
+        <a style="color: darkred" href="/delete/{{ uuid }}?key={{ key }}">Delete Image</a>
     </div>
 </body>
