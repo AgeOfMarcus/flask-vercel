@@ -30,9 +30,11 @@
                 res.viewer, # viewer url
                 res.image, # image url
                 res.shorten(), # shortened url
+                res.key, # key for deletion
             )
 
             # you can upload raw data with imj.upload(bytedata)
+            # images can be deleted with res.delete() or img.delete(res.key)
         </code></pre>
 
         <h3>Pure python example</h3>
@@ -40,12 +42,16 @@
             import requests
 
             r = requests.post("https://i.marcusj.org/api/upload", files={'image': open('widepeepohappy.png', 'rb')})
-
-            print(r.url) # this is the viewing url
-            img_id = r.url.split('/')[-1]
+            
+            res = r.json()
+            print(res['url']) # this is the viewing url
+            img_id = res['url'].split('/')[-1]
             shortlink = requests.get(f'https://i.marcusj.org/shorten/{img_id}').url # this is the shortlink directly to the image
 
             print(r.url.replace('view','image')) # this is the long link, directly to the image
+
+            # to delete the image
+            print(requests.get(f'https://i.marcusj.org/delete/{img_id}?key={res["key"]}').text)
         </code></pre>
     </div>
 </body>

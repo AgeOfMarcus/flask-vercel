@@ -105,7 +105,7 @@ def app_api_upload():
     if image:
         im = Image.open(image)
         if not im.verify():
-            return 'error: file is not a valid image', 422
+            return jsonify({'error': 'file is not a valid image'}), 422
         raw = im.format.encode() + b':::' + lzma.compress(get_image_data(im))
         enc = base64.b64encode(raw).decode()
         uid = str(uuid.uuid4()).replace('-','')
@@ -113,7 +113,7 @@ def app_api_upload():
         doc = db.document(uid)
         doc.set({'image': enc, 'key': key})
         return jsonify({'url': f'{URL}/image/{uid}', 'key': key})
-    return 'error: no image', 400
+    return jsonify({'error': 'no image'}), 400
 
 @app.route('/view/<uid>')
 def app_view(uid):
